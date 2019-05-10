@@ -1,3 +1,3 @@
 #!/bin/bash
-AWS_PROFILE=cncf eksctl delete nodegroup --name=GQLnodegroup --cluster GQLcluster
-AWS_PROFILE=cncf eksctl delete cluster --name=GQLcluster
+AWS_PROFILE=cncf-west-2 eksctl delete nodegroup --name=GQLnodegroup --cluster GQLcluster
+AWS_PROFILE=cncf-west-2 eksctl delete cluster --name=GQLcluster
