@@ -55,5 +55,5 @@ sqlite/*.sql
 /report_alltime.txt
 *.secret
 /error.yaml
-/domain/devstats-demo.net.json
+/domain/devstats.graphql.org.json
 /domain/cert-issuer.yaml

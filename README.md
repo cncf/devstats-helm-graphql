@@ -54,6 +54,8 @@ Install SSL certificates using Let's encrypt and auto renewal using `cert-manage
 
 You should set namespace to 'devstats' first: `./switch_namespace.sh devstats`.
 
+You should now set labels on nodes, 3 nodes need `devstats-db` node, at least one node needs `devstats-app`: `gqlkubectl.sh label nodes <node-name> node=devstats-db`.
+
 Please provide secret values for each file in `./secrets/*.secret.example` saving it as `./secrets/*.secret` or specify them from the command line.
 
 Please note that `vim` automatically adds new line to all text files, to remove it run `truncate -s -1` on a saved file.

@@ -120,7 +120,7 @@ limitsProvisionsMemory: '16Gi'
 name: devstats
 nameOverride: devstats
 appNodeSelector:
-  node: devstats-app
+  node2: devstats-app
 dbNodeSelector:
   node: devstats-db
 oauthSecret: github-oauth
