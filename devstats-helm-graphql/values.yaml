@@ -86,6 +86,7 @@ bootstrapRestartPolicy: Never
 bootstrapUDrop: ''
 companyAcq: "companies.yaml"
 concurrencyPolicy: Forbid
+domainName: 'devstats.graphql.org'
 fullnameOverride: devstats
 grafanaCommand: 'grafana_start.sh'
 grafanaImage: 'lukaszgryglicki/devstats-grafana'

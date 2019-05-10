@@ -18,7 +18,7 @@ spec:
 {{- $root := . -}}
 {{ range $index, $_ := .Values.projects }}
 {{ if and (or (eq ($index|int) ($root.Values.indexIngressesFrom|int)) (gt ($index|int) ($root.Values.indexIngressesFrom|int))) (lt ($index|int) ($root.Values.indexIngressesTo|int)) }}
-    - {{ .proj }}.devstats-demo.net
+    - {{ .proj }}.{{ $root.Values.domainName }}
 {{ end }}
 {{ end }}
     secretName: devstats-tls
@@ -26,7 +26,7 @@ spec:
 {{- $root := . -}}
 {{ range $index, $_ := .Values.projects }}
 {{ if and (or (eq ($index|int) ($root.Values.indexIngressesFrom|int)) (gt ($index|int) ($root.Values.indexIngressesFrom|int))) (lt ($index|int) ($root.Values.indexIngressesTo|int)) }}
-  - host: {{ .proj }}.devstats-demo.net
+  - host: {{ .proj }}.{{ $root.Values.domainName }}
     http:
       paths:
       - path: /

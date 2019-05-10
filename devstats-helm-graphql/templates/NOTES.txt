@@ -24,13 +24,13 @@ You can restrict ranges of projects provisioned and/or range of cron jobs to cre
 You can overwrite the number of CPUs autodetected in each pod, setting this to 1 will make each pod single-threaded
 - `--set nCPUs=1`.
 
-Please note variables commented out in `./devstats-helm-example/values.yaml`. You can either uncomment them or pass their values via `--set variable=name`.
+Please note variables commented out in `./devstats-helm-graphql/values.yaml`. You can either uncomment them or pass their values via `--set variable=name`.
 
 Resource types used: secret, pv, pvc, po, cronjob, deployment, svc
 
 To debug provisioning use:
-- `helm install --dry-run --debug ./devstats-helm-example --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,indexProvisionsFrom=0,indexProvisionsTo=1,provisionPodName=debug,provisionCommand=sleep,provisionCommandArgs={36000s}`.
-- `helm install ./devstats-helm-example --set skipSecrets=1,skipPVs=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,bootstrapPodName=debug,bootstrapCommand=sleep,bootstrapCommandArgs={36000s}`
+- `helm install --dry-run --debug ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,indexProvisionsFrom=0,indexProvisionsTo=1,provisionPodName=debug,provisionCommand=sleep,provisionCommandArgs={36000s}`.
+- `helm install ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,bootstrapPodName=debug,bootstrapCommand=sleep,bootstrapCommandArgs={36000s}`
 - Bash into it: `github.com/cncf/devstats-k8s-lf`: `./util/pod_shell.sh devstats-provision-cncf`.
 - Then for example: `PG_USER=gha_admin db.sh psql cncf`, followed: `select dt, proj, prog, msg from gha_logs where proj = 'cncf' order by dt desc limit 40;`.
 - Finally delete pod: `kubectl delete pod devstats-provision-cncf`.
