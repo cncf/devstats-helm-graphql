@@ -169,19 +169,11 @@ usePostgresResourcesLimits: 1
 waitForBootstrap: 60
 waitForPostgres: 15
 projects:
-  - proj: cncf
-    db: cncf
-    icon: 'cncf'
-    org: 'CNCF'
-    repo: 'cncf/landscapeapp'
-    cron: '25 * * * *'
+  - proj: graphql
+    db: graphql
+    icon: cncf
+    org: GraphQL
+    repo: 'graphql/graphql-js'
+    cron: '7 * * * *'
     disk: 30Gi
     i: 0
-  - proj: prometheus
-    db: prometheus
-    icon: 'prometheus'
-    org: 'Prometheus'
-    repo: 'prometheus/prometheus'
-    cron: '10 * * * *'
-    disk: 10Gi
-    i: 1

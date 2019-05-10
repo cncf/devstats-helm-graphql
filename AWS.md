@@ -32,7 +32,7 @@ Other useful command (not necesarily needed in this setup):
 
 - Manually create AWS hosted zone: `aws route53 create-hosted-zone --name "devstats.graphql.org" --caller-reference "devstats.graphql.org-$(date +%s)"`. Note its ID.
 - To list DNS servers assigned to this new hosted zone: `aws route53 list-resource-record-sets --output json --hosted-zone-id "/hostedzone/xxx" --query "ResourceRecordSets[?Type == 'NS']" | jq -r '.[0].ResourceRecords[].Value'`.
-- To check if DNS is working: `dig +short @first-dns-server. graphiql.devstats.graphql.org`. you can use `anything.devstats.graphql.org` because this is a wildcard domain. Also `dig +short @second-dns-server. devstats.graphql.org` to check main domain.
+- To check if DNS is working: `dig +short @first-dns-server. graphql.devstats.graphql.org`. you can use `anything.devstats.graphql.org` because this is a wildcard domain. Also `dig +short @second-dns-server. devstats.graphql.org` to check main domain.
 - To actually test them: `links https://prometheus.devstats.graphql.org`.
 - To delete wildcard record: `aws route53 change-resource-record-sets --hosted-zone-id xxx --change-batch '{"Changes": [{"Action": "DELETE","ResourceRecordSet": {"Name": "*","Type": "CNAME","TTL": 300,"ResourceRecords": [{ "Value": "zzz.us-east-1.elb.amazonaws.com"}]}}]}'`.
 - To delete main record: `aws route53 change-resource-record-sets --hosted-zone-id xxx --change-batch '{"Changes":[{"Action":"DELETE","ResourceRecordSet":{"Name":"devstats.graphql.org.","Type":"A","AliasTarget":{"HostedZoneId":"yyy","DNSName":"dualstack.zzz.us-east-1.elb.amazonaws.com.","EvaluateTargetHealth":false}}}]}'`

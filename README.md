@@ -75,7 +75,7 @@ List of secrets:
 You can select which secret(s) should be skipped via: `--set skipPGSecret=1,skipGitHubSecret=1,skipGrafanaSecret=1`.
 
 You can install only selected templates, see `values.yaml` for detalis (refer to `skipXYZ` variables in comments), example:
-- `helm install --dry-run --debug ./devstats-helm-example --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,runTests=1`.
+- `helm install --dry-run --debug ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,runTests=1`.
 
 You can restrict ranges of projects provisioned and/or range of cron jobs to create via:
 - `--set indexPVsFrom=5,indexPVsTo=9,indexProvisionsFrom=5,indexProvisionsTo=9,indexCronsFrom=5,indexCronsTo=9,indexGrafanasFrom=5,indexGrafanasTo=9,indexServicesFrom=5,indexServicesTo=9,indexIngressesFrom=5,indexIngressesTo=9`.
@@ -83,13 +83,13 @@ You can restrict ranges of projects provisioned and/or range of cron jobs to cre
 You can overwrite the number of CPUs autodetected in each pod, setting this to 1 will make each pod single-threaded
 - `--set nCPUs=1`.
 
-Please note variables commented out in `./devstats-helm-example/values.yaml`. You can either uncomment them or pass their values via `--set variable=name`.
+Please note variables commented out in `./devstats-helm-graphql/values.yaml`. You can either uncomment them or pass their values via `--set variable=name`.
 
 Resource types used: secret, pv, pvc, po, cronjob, deployment, svc
 
 To debug provisioning use:
-- `helm install --debug --dry-run ./devstats-helm-example --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,indexProvisionsFrom=0,indexProvisionsTo=1,provisionPodName=debug,provisionCommand=sleep,provisionCommandArgs={36000s}`.
-- `helm install ./devstats-helm-example --set skipSecrets=1,skipPVs=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipIngress=1,skipPostgres=1,bootstrapPodName=debug,bootstrapCommand=sleep,bootstrapCommandArgs={36000s}`
+- `helm install --debug --dry-run ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,indexProvisionsFrom=0,indexProvisionsTo=1,provisionPodName=debug,provisionCommand=sleep,provisionCommandArgs={36000s}`.
+- `helm install ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipProvisions=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipIngress=1,skipPostgres=1,bootstrapPodName=debug,bootstrapCommand=sleep,bootstrapCommandArgs={36000s}`
 - Bash into it: `github.com/cncf/devstats-k8s-lf`: `./util/pod_shell.sh devstats-provision-cncf`.
 - Then for example: `PG_USER=gha_admin db.sh psql cncf`, followed: `select dt, proj, prog, msg from gha_logs where proj = 'cncf' order by dt desc limit 40;`.
 - Finally delete pod: `kubectl delete pod devstats-provision-cncf`.
@@ -99,8 +99,7 @@ To debug provisioning use:
 
 Final deployments:
 
-- [CNCF](https://cncf.devstats-demo.net).
-- [Prometheus](https://prometheus.devstats-demo.net).
+- [GraphQL](https://graphql.devstats.graphql.org).
 
 DevStats data sources:
 
@@ -132,16 +131,14 @@ Cluster:
 
 UI:
 
-- We are using Grafana 6.1.4, all dashboards, users and datasources are automatically provisioned from JSONs and template files.
+- We are using Grafana 6.1.6, all dashboards, users and datasources are automatically provisioned from JSONs and template files.
 - We're using read-only connection to HA patroni database to take advantage of read-replicas and 3x faster read connections.
 - Grafana is running on plain HTTP and port 3000, ingress controller is responsible for SSL/HTTPS layer.
+- We're using liveness and readiness probles for Grafana instances to allow detecting unhealhty instances and auto-replace by Kubernetes in such cases.
 
 DNS:
 
-- We're using AWS Route 53 domain registered automatically from a shell script that points to `nginx-ingress` AWS ELB endpoint: devstats-demo.net.
-- That domain automatically creates AWS hosted zone that maintains its and its subdomains DNS configuration.
-- For that domain we're adding wildcard subdomain `*.devstats-demo.net` (also using automated scripts). Domain and all sub domains are pointing to ingress ELB enternal IP.
-- Subdomains use CNAME records to point to ingress ELB, while domain itself uses Alias (AWS requires this).
+- We're using external domain setup that uses CNAME records to point to our Kubernetes Nginx Ingress (AWS ELB address) using CNAME records (redirecting `devstats.graphql.org` and wildcard `*.devstats.graphql.org` to Ingress ELB).
 
 SSL/HTTPS:
 
@@ -152,7 +149,7 @@ Ingress:
 
 - We're using `nginx-ingress` to provide HTTPS and to disable plain HTTP access.
 - Ingress holds SSL certificate data in annotations (this is managed by `cert-manager`).
-- Based on the request hostname `prometheus.devstats-demo.net` or `cncf.devstats-demo.net` we're redirecting trafic to a specific Grafana service (running on port 80 inside the cluster).
+- Based on the request hostname `hostname.devstats.graphql.org` we're redirecting trafic to a specific Grafana service (running on port 80 inside the cluster).
 - Each Grafana has internal (only inside the cluster) service from port 3000 to port 80.
 
 Deployment:
