@@ -1,17 +1,17 @@
-# devstats-helm-example
+# devstats-helm-graphql
 
-DevStats Deployment on Kubernetes using Helm. This is an example deployment of few CNCF projects.
+GraphQL Foundation DevStats Deployment on Kubernetes using Helm.
 
-Helm chart in `devstats-helm-example`.
+Helm chart in `devstats-helm-graphql`.
 
 
 # EKS cluster
 
 If you want to use EKS cluster, there are some shell scripts in `scripts` directory that can be useful:
 
-- `cncfekscluster.sh` - can be used to create EKS cluster, it uses [eksctl](https://eksctl.io).
-- `cncfkubectl.sh` - once cluster is up and running you can use it as `kubectl` - it is configured to use cluster created by `cncfekscluster.sh`.
-- `cncfec2desc.sh` - you can use it to list `EC2` instances created by `cncfekscluster.sh`.
+- `eks_cluster.sh` - can be used to create EKS cluster, it uses [eksctl](https://eksctl.io).
+- `gqlkubectl.sh` - once cluster is up and running you can use it as `kubectl` - it is configured to use cluster created by `eks_cluster.sh`.
+- `ec2_desc.sh` - you can use it to list `EC2` instances created by `cncfekscluster.sh`.
 
 Before using any of those script you need to define `cncf` AWS profile by modifying files in `~/.aws/` directory:
 
