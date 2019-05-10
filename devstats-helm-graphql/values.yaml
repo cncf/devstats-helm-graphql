@@ -156,7 +156,7 @@ syncImage: 'lukaszgryglicki/devstats-minimal'
 syncPodName: devstats
 syncRestartPolicy: Never
 testsImage: 'lukaszgryglicki/devstats-test'
-testsPodName: tests
+testsPodName: devstats-tests
 testsRestartPolicy: Never
 volumeMountName: data
 volumeMountPath: '/root'
