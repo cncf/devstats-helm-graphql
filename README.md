@@ -5,18 +5,7 @@ GraphQL Foundation DevStats Deployment on Kubernetes using Helm.
 Helm chart in `devstats-helm-graphql`.
 
 
-# EKS cluster
-
-If you want to use EKS cluster, there are some shell scripts in `scripts` directory that can be useful:
-
-- `eks_cluster.sh` - can be used to create EKS cluster, it uses [eksctl](https://eksctl.io).
-- `gqlkubectl.sh` - once cluster is up and running you can use it as `kubectl` - it is configured to use cluster created by `eks_cluster.sh`.
-- `ec2_desc.sh` - you can use it to list `EC2` instances created by `cncfekscluster.sh`.
-
-# Helm and Tiller
-
-You need to have a Helm client installed locally and Tiller installed on the cluser:
-- `scripts/install_tiller.sh` - installs Tiller on the cluster.
+# AWS configuration 
 
 Before using any of those script you need to define `cncf` AWS profile by modifying files in `~/.aws/` directory:
 
@@ -34,9 +23,26 @@ aws_access_key_id = yyyyyyyyyyyyyyyyyy
 ```
 
 
+# EKS cluster
+
+If you want to use EKS cluster, there are some shell scripts in `scripts` directory that can be useful:
+
+- `eks_cluster.sh` - can be used to create EKS cluster, it uses [eksctl](https://eksctl.io).
+- `gqlkubectl.sh` - once cluster is up and running you can use it as `kubectl` - it is configured to use cluster created by `eks_cluster.sh`.
+- `ec2_desc.sh` - you can use it to list `EC2` instances created by `cncfekscluster.sh`.
+
+
+# Helm and Tiller
+
+You need to have a Helm client installed locally and Tiller installed on the cluser:
+- `scripts/install_tiller.sh` - installs Tiller on the cluster.
+
+
 # Domain, DNS and Ingress
 
-Please configure domain, DNS and Ingress first, for example `AWS.md`.
+Please configure Ingress first, for example `AWS.md`.
+
+We are assuming here that you already have a domain.
 
 
 # SSL
