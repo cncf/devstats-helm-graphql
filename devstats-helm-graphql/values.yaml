@@ -58,12 +58,12 @@
 # postgresImageName: 'jberkus/simple-patroni:v3'
 # postgresImageName: 'lukaszgryglicki/devstats-patroni'
 # periods: 'd7:t,m:f,q:t,y10:f'
-# provisionCommand: './example/repos.sh'
-# provisionCommand: './example/affs.sh'
-# provisionCommand: './example/vars.sh'
-# provisionCommand: './example/clear_devstats_running_flag.sh'
-# provisionCommand: './example/set_provisioned_flag.sh'
-# provisionCommand: './example/add_metric.sh'
+# provisionCommand: './graphql/repos.sh'
+# provisionCommand: './graphql/affs.sh'
+# provisionCommand: './graphql/vars.sh'
+# provisionCommand: './graphql/clear_devstats_running_flag.sh'
+# provisionCommand: './graphql/set_provisioned_flag.sh'
+# provisionCommand: './graphql/add_metric.sh'
 # provisionCommand: 'sleep'
 # provisionCommandArgs:
 #   - "36000"
@@ -78,7 +78,7 @@
 # syncCommandArgs:
 #   - "syncarg"
 affiliations: 'github_users.json'
-bootstrapCommand: './example/deploy_all.sh'
+bootstrapCommand: './graphql/deploy_all.sh'
 bootstrapLDrop: ''
 bootstrapNoCreate: ''
 bootstrapPodName: devstats-provision-bootstrap
@@ -119,11 +119,15 @@ limitsProvisionsCPU: '8000m'
 limitsProvisionsMemory: '16Gi'
 name: devstats
 nameOverride: devstats
+appNodeSelector:
+  node: devstats-app
+dbNodeSelector:
+  node: devstats-db
 oauthSecret: github-oauth
 pgSecret: pg-db
 proivisionImage: 'lukaszgryglicki/devstats'
-projectsFile: 'example/projects.yaml'
-provisionCommand: './example/deploy_all.sh'
+projectsFile: 'graphql/projects.yaml'
+provisionCommand: './graphql/deploy_all.sh'
 provisionPodName: devstats-provision
 provisionRestartPolicy: Never
 postgresSvcName: 'devstats-postgres'

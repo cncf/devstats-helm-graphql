@@ -13,6 +13,11 @@ If you want to use EKS cluster, there are some shell scripts in `scripts` direct
 - `gqlkubectl.sh` - once cluster is up and running you can use it as `kubectl` - it is configured to use cluster created by `eks_cluster.sh`.
 - `ec2_desc.sh` - you can use it to list `EC2` instances created by `cncfekscluster.sh`.
 
+# Helm and Tiller
+
+You need to have a Helm client installed locally and Tiller installed on the cluser:
+- `scripts/install_tiller.sh` - installs Tiller on the cluster.
+
 Before using any of those script you need to define `cncf` AWS profile by modifying files in `~/.aws/` directory:
 
 - `config` (example):
