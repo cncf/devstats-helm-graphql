@@ -118,6 +118,7 @@ limitsPostgresCPU: '8000m'
 limitsPostgresMemory: '16Gi'
 limitsProvisionsCPU: '8000m'
 limitsProvisionsMemory: '16Gi'
+mainProject: graphql
 name: devstats
 nameOverride: devstats
 appNodeSelector:

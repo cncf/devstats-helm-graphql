@@ -15,6 +15,7 @@ metadata:
 spec:
   tls:
   - hosts:
+    - {{ .Values.domainName }}
 {{- $root := . -}}
 {{ range $index, $_ := .Values.projects }}
 {{ if and (or (eq ($index|int) ($root.Values.indexIngressesFrom|int)) (gt ($index|int) ($root.Values.indexIngressesFrom|int))) (lt ($index|int) ($root.Values.indexIngressesTo|int)) }}
@@ -23,6 +24,13 @@ spec:
 {{ end }}
     secretName: devstats-tls
   rules:
+  - host: {{ .Values.domainName }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: devstats-service-{{ $root.Values.mainProject }}
+          servicePort: 80
 {{- $root := . -}}
 {{ range $index, $_ := .Values.projects }}
 {{ if and (or (eq ($index|int) ($root.Values.indexIngressesFrom|int)) (gt ($index|int) ($root.Values.indexIngressesFrom|int))) (lt ($index|int) ($root.Values.indexIngressesTo|int)) }}
