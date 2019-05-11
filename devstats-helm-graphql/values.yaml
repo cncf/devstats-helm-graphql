@@ -192,7 +192,7 @@ projects:
     icon: 'cncf'
     org: 'GraphQL IDE'
     repo: 'graphql/graphiql'
-    cron: '51 * * * *'
+    cron: '12 * * * *'
     disk: 10Gi
     i: 2
   - proj: graphqlspec
@@ -200,7 +200,7 @@ projects:
     icon: 'cncf'
     org: 'GraphQL Spec'
     repo: 'graphql/graphql-spec'
-    cron: '51 * * * *'
+    cron: '14 * * * *'
     disk: 10Gi
     i: 3
   - proj: expressgraphql
@@ -208,6 +208,6 @@ projects:
     icon: 'cncf'
     org: 'Express GraphQL'
     repo: 'graphql/express-graphql'
-    cron: '51 * * * *'
+    cron: '16 * * * *'
     disk: 10Gi
     i: 4
