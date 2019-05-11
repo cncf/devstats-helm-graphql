@@ -187,3 +187,27 @@ projects:
     cron: '10 * * * *'
     disk: 10Gi
     i: 1
+  - proj: graphiql
+    db: graphiql
+    icon: 'cncf'
+    org: 'GraphQL IDE'
+    repo: 'graphql/graphiql'
+    cron: '51 * * * *'
+    disk: 10Gi
+    i: 2
+  - proj: graphqlspec
+    db: graphqlspec
+    icon: 'cncf'
+    org: 'GraphQL Spec'
+    repo: 'graphql/graphql-spec'
+    cron: '51 * * * *'
+    disk: 10Gi
+    i: 3
+  - proj: expressgraphql
+    db: expressgraphql
+    icon: 'cncf'
+    org: 'Express GraphQL'
+    repo: 'graphql/express-graphql'
+    cron: '51 * * * *'
+    disk: 10Gi
+    i: 4
