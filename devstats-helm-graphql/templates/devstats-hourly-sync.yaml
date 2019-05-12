@@ -74,6 +74,8 @@ spec:
               value: '{{ $root.Values.forceComputeAll }}'
             - name: GHA2DB_SKIP_METRICS
               value: '{{ $root.Values.skipMetrics }}'
+            - name: GHA2DB_EXCLUDE_VARS
+              value: '{{ $root.Values.excludeVars }}'
             - name: GHA2DB_ONLY_METRICS
               value: '{{ $root.Values.onlyMetrics }}'
             - name: GHA2DB_FORCE_PERIODS
