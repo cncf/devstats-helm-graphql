@@ -62,6 +62,7 @@
 # provisionCommand: './gql/repos.sh'
 # provisionCommand: './gql/affs.sh'
 # provisionCommand: './gql/vars.sh'
+# provisionCommand: './gql/health.sh'
 # provisionCommand: './gql/clear_devstats_running_flag.sh'
 # provisionCommand: './gql/set_provisioned_flag.sh'
 # provisionCommand: './gql/add_metric.sh'
