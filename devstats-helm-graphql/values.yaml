@@ -41,6 +41,7 @@
 #   - "bootarg"
 # cmdDebug: 1
 # debug: 1
+# excludeVars: 'projects_health_partial_html'
 # forceComputeAll: 1
 # githubDebug: 1
 # grafanaCommandArgs:
@@ -71,6 +72,7 @@
 # reposDir: "/root/devstats_repos/"
 # runTests: true
 # skipMetrics: 'users_activity,committers_cum'
+# skipMetrics: 'projects_health'
 # https://itnext.io/efs-persistent-volumes-on-aws-kubernetes-193e0035bbfb
 # storageAccessModes: ReadWriteMany
 # storageClass: efs
