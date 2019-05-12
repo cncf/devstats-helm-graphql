@@ -34,3 +34,6 @@ To debug provisioning use:
 - Bash into it: `github.com/cncf/devstats-k8s-lf`: `./util/pod_shell.sh devstats-provision-cncf`.
 - Then for example: `PG_USER=gha_admin db.sh psql cncf`, followed: `select dt, proj, prog, msg from gha_logs where proj = 'cncf' order by dt desc limit 40;`.
 - Finally delete pod: `kubectl delete pod devstats-provision-cncf`.
+
+Other useful commands:
+- Deploy 'All' project for GraphQL: `helm install --dry-run --debug ./devstats-helm-graphql --set skipSecrets=1,skipPVs=1,skipBootstrap=1,skipCrons=1,skipGrafanas=1,skipServices=1,skipPostgres=1,skipIngress=1,indexProvisionsFrom=0,indexProvisionsTo=1,provisionCommand=sleep,provisionCommandArgs={36000s},skipMetrics=projects_health,excludeVars=projects_health_partial_html`.
