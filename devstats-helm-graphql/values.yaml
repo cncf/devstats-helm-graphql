@@ -93,6 +93,8 @@ domainName: 'devstats.graphql.org'
 fullnameOverride: devstats
 grafanaCommand: 'grafana_start.sh'
 grafanaImage: 'lukaszgryglicki/devstats-grafana'
+grafanaMaxSurge: 1
+grafanaMaxUnavailable: 1
 grafanaNReplicas: 2
 grafanaPodName: devstats-grafana
 grafanaPort: 3000
