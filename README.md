@@ -157,7 +157,7 @@ Ingress:
 Deployment:
 
 - Helm chart allows very specific deployments, you can specify which obejcts should be created and also for which projects
-- For exampel you can create only Grafana service for prometheus, or only provision CNCF with a non-standar command etc.
+- For example you can create only Grafana service for prometheus, or only provision CNCF with a non-standar command etc.
 
 Resource configuration:
 
@@ -167,7 +167,7 @@ Resource configuration:
 
 Secrets:
 
-- Postgres connection parameters, grafana credentials, GitHub oauth tokes are all stored in `*.secret` files (they're gitignored and not checked into the repo). Each such file has `*.secret.example` counterpart as a hint for user to create the actual `*.secret` file.
+- Postgres connection parameters, Grafana credentials, GitHub oauth tokes are all stored in `*.secret` files (they're gitignored and not checked into the repo). Each such file has `*.secret.example` counterpart as a hint for user to create the actual `*.secret` file.
 
 Docker images:
 
@@ -176,7 +176,7 @@ Docker images:
 - `devstats-minimal` - minimal devstats image, used by hourly-sync cron jobs (contains only tools needed to do a hourly sync).
 - `devstats-grafana` - Grafana image containing all tools to provision Grafana for a given project (dashboards JSONs, datasource/config templates etc.).
 - `devstats-test` - image containing all DevStats tests (it contains Go 1.12 runtime and postgres 11 database, executes database, series, metrics, regexp and other tests and other checks: format, lint, imports, vet, const, usedexports, errcheck).
-- `jberkus/simple-patroni:v3` - image containing patroni HA database.
+- `jberkus/simple-patroni:v3` - image containing patroni HA database. `lukaszgryglicki/devstats-patroni` - patched patroni for handling database directory permissions on already existing PVs.
 
 CI/CD:
 
