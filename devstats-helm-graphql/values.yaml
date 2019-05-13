@@ -93,7 +93,7 @@ domainName: 'devstats.graphql.org'
 fullnameOverride: devstats
 grafanaCommand: 'grafana_start.sh'
 grafanaImage: 'lukaszgryglicki/devstats-grafana'
-grafanaNReplicas: 1
+grafanaNReplicas: 2
 grafanaPodName: devstats-grafana
 grafanaPort: 3000
 grafanaRestartPolicy: Always
