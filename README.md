@@ -186,6 +186,10 @@ CI/CD:
 - After tests are finished, Travis passes results to a webhook that receives tests results, and deploys new devstats version depending on test results and commit message (it can skip deploy if special flags are used in the commit message).
 - Currently only bare metal instances are configured to receive Travis tests results and eventually deploy on success.
 
+Kubernetes dashboard
+
+- You can track cluster state using Kubernetes dashboards, see [how to install it](https://github.com/cncf/devstats-kubernetes-dashboard).
+
 Architecture:
 
 - Bootstrap pod - it is responsible for creating logs database (shared by all devstats pods instances), users (admin, team, readonly), database permissions etc. It waits for patroni HA DB to become ready before doing its job. It doesn't mount aby volumes. Patroni credentials come from secret.
