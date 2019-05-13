@@ -34,6 +34,16 @@ spec:
       - name: devshm
         emptyDir:
           medium: Memory
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - postgres
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: '{{ .Values.postgresSvcName }}'
 {{ if .Values.overwritePostgresCommand }}

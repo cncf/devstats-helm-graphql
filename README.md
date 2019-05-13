@@ -120,6 +120,7 @@ Database:
 - Patroni image runs as postgres user so we're using security context filesystem group 999 (postgres) when mounting PVC for patroni pod to make that volume writable for patroni pod.
 - Patroni supports automatic master election (it uses RBAC's and manipulates service endpoints to make that transparent for app pods).
 - Patroni is providing continuous replication within those 3 nodes.
+- We are using pod anti-affinity to make sure each patroni pod is running on a different node.
 - Write performance is limited by single node power, read performance is up to 3x (2 read replicas and master).
 - We're using time-series like approach when generating final data displayed on dashboards (custom time-series implementation at top of postgres database).
 
