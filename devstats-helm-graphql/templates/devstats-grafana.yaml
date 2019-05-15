@@ -86,15 +86,17 @@ spec:
               name: {{ $root.Values.grafanaSecret }}
               key: GF_SECURITY_ADMIN_PASSWORD.secret
         livenessProbe:
-          httpGet:
-            path: /login
-            port: 3000
+          exec:
+            command:
+            - 'grafana_health_check.sh'
+            - '127.0.0.1:3000'
           initialDelaySeconds: 60
           periodSeconds: 30
         readinessProbe:
-          httpGet:
-            path: /login
-            port: 3000
+          exec:
+            command:
+            - 'grafana_health_check.sh'
+            - '127.0.0.1:3000'
           initialDelaySeconds: 10
           periodSeconds: 30
       restartPolicy: {{ $root.Values.grafanaRestartPolicy }}
