@@ -178,7 +178,7 @@ waitForPostgres: 15
 projects:
   - proj: graphql
     db: graphql
-    icon: cncf
+    icon: graphql
     org: GraphQL
     repo: 'graphql/graphql-js'
     cron: '7 * * * *'
@@ -186,7 +186,7 @@ projects:
     i: 0
   - proj: graphqljs
     db: graphqljs
-    icon: cncf
+    icon: graphqljs
     org: 'GraphQL JavaScript'
     repo: 'graphql/graphql-js'
     cron: '10 * * * *'
@@ -194,7 +194,7 @@ projects:
     i: 1
   - proj: graphiql
     db: graphiql
-    icon: 'cncf'
+    icon: graphiql
     org: 'GraphQL IDE'
     repo: 'graphql/graphiql'
     cron: '12 * * * *'
@@ -202,7 +202,7 @@ projects:
     i: 2
   - proj: graphqlspec
     db: graphqlspec
-    icon: 'cncf'
+    icon: graphqlspec
     org: 'GraphQL Spec'
     repo: 'graphql/graphql-spec'
     cron: '14 * * * *'
@@ -210,7 +210,7 @@ projects:
     i: 3
   - proj: expressgraphql
     db: expressgraphql
-    icon: 'cncf'
+    icon: expressgraphql
     org: 'Express GraphQL'
     repo: 'graphql/express-graphql'
     cron: '16 * * * *'
