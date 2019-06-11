@@ -132,7 +132,7 @@ dbNodeSelector:
   node: devstats-db
 oauthSecret: github-oauth
 pgSecret: pg-db
-proivisionImage: 'lukaszgryglicki/devstats'
+provisionImage: 'lukaszgryglicki/devstats-test'
 projectsFile: 'gql/projects.yaml'
 provisionCommand: './gql/deploy_all.sh'
 provisionPodName: devstats-provision
