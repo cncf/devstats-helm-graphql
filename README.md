@@ -6,7 +6,7 @@ Helm chart in `devstats-helm-graphql`.
 
 # Adding new projects
 
-See `cncf/devstats-helm-example`:`ADDING_NEW_PROJECTS.md` for informations about how to add more projects.
+See `cncf/devstats-helm`:`ADDING_NEW_PROJECTS.md` for informations about how to add more projects.
 
 
 # AWS configuration 
