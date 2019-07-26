@@ -63,13 +63,16 @@ spec:
           value: {{ .proj }}
         - name: PG_DB
           value: {{ .db }}
-        - name: PG_PORT
-          value: '5432'
         - name: PG_HOST
           valueFrom:
             secretKeyRef:
               name: {{ $root.Values.pgSecret }}
               key: PG_HOST_RO.secret
+        - name: PG_PORT
+          valueFrom:
+            secretKeyRef:
+              name: {{ $root.Values.pgSecret }}
+              key: PG_PORT.secret
         - name: PG_PASS
           valueFrom:
             secretKeyRef:
